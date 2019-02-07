@@ -4328,15 +4328,12 @@ typedef uint32_t uint_fast32_t;
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
 # 53 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/interrupt_manager.h" 1
-# 54 "./mcc_generated_files/mcc.h" 2
-
 # 1 "./mcc_generated_files/pwm3.h" 1
 # 97 "./mcc_generated_files/pwm3.h"
 void PWM3_Initialize(void);
 # 124 "./mcc_generated_files/pwm3.h"
 void PWM3_LoadDutyValue(uint16_t dutyValue);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 54 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr6.h" 1
 # 103 "./mcc_generated_files/tmr6.h"
@@ -4353,7 +4350,7 @@ void TMR6_WriteTimer(uint8_t timerVal);
 void TMR6_LoadPeriodRegister(uint8_t periodVal);
 # 325 "./mcc_generated_files/tmr6.h"
 _Bool TMR6_HasOverflowOccured(void);
-# 56 "./mcc_generated_files/mcc.h" 2
+# 55 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr4.h" 1
 # 103 "./mcc_generated_files/tmr4.h"
@@ -4370,19 +4367,19 @@ void TMR4_WriteTimer(uint8_t timerVal);
 void TMR4_LoadPeriodRegister(uint8_t periodVal);
 # 325 "./mcc_generated_files/tmr4.h"
 _Bool TMR4_HasOverflowOccured(void);
-# 57 "./mcc_generated_files/mcc.h" 2
+# 56 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm4.h" 1
 # 97 "./mcc_generated_files/pwm4.h"
 void PWM4_Initialize(void);
 # 124 "./mcc_generated_files/pwm4.h"
 void PWM4_LoadDutyValue(uint16_t dutyValue);
-# 58 "./mcc_generated_files/mcc.h" 2
-# 73 "./mcc_generated_files/mcc.h"
+# 57 "./mcc_generated_files/mcc.h" 2
+# 72 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 86 "./mcc_generated_files/mcc.h"
+# 85 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 98 "./mcc_generated_files/mcc.h"
+# 97 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
 # 44 "main.c" 2
 
@@ -4638,8 +4635,6 @@ void main(void)
 
     while (1)
     {
-        if (arrow_degree == 478)
-            arrow_degree = 478;
       arrow_degree = getArrowDegree4(speed4);
       hor_pwm_duty = cos(arrow_degree, &rewersHor);
       if (rewersHor) do { LATAbits.LATA1 = 1; } while(0);

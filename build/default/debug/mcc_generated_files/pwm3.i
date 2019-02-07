@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/tmr4.c"
+# 1 "mcc_generated_files/pwm3.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/tmr4.c" 2
-# 51 "mcc_generated_files/tmr4.c"
+# 1 "mcc_generated_files/pwm3.c" 2
+# 51 "mcc_generated_files/pwm3.c"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4238,10 +4238,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 51 "mcc_generated_files/tmr4.c" 2
+# 51 "mcc_generated_files/pwm3.c" 2
 
-# 1 "mcc_generated_files/tmr4.h" 1
-# 54 "mcc_generated_files/tmr4.h"
+# 1 "mcc_generated_files/pwm3.h" 1
+# 55 "mcc_generated_files/pwm3.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4313,83 +4313,39 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
-# 54 "mcc_generated_files/tmr4.h" 2
+# 55 "mcc_generated_files/pwm3.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
-# 55 "mcc_generated_files/tmr4.h" 2
-# 103 "mcc_generated_files/tmr4.h"
-void TMR4_Initialize(void);
-# 132 "mcc_generated_files/tmr4.h"
-void TMR4_StartTimer(void);
-# 164 "mcc_generated_files/tmr4.h"
-void TMR4_StopTimer(void);
-# 199 "mcc_generated_files/tmr4.h"
-uint8_t TMR4_ReadTimer(void);
-# 238 "mcc_generated_files/tmr4.h"
-void TMR4_WriteTimer(uint8_t timerVal);
-# 290 "mcc_generated_files/tmr4.h"
-void TMR4_LoadPeriodRegister(uint8_t periodVal);
-# 325 "mcc_generated_files/tmr4.h"
-_Bool TMR4_HasOverflowOccured(void);
-# 52 "mcc_generated_files/tmr4.c" 2
-# 62 "mcc_generated_files/tmr4.c"
-void TMR4_Initialize(void)
+# 56 "mcc_generated_files/pwm3.h" 2
+# 97 "mcc_generated_files/pwm3.h"
+void PWM3_Initialize(void);
+# 124 "mcc_generated_files/pwm3.h"
+void PWM3_LoadDutyValue(uint16_t dutyValue);
+# 52 "mcc_generated_files/pwm3.c" 2
+# 64 "mcc_generated_files/pwm3.c"
+void PWM3_Initialize(void)
 {
 
 
 
-    PR4 = 0xFF;
+ CCP3CON = 0x0C;
 
 
-    TMR4 = 0x00;
+ CCPR3L = 0x00;
 
 
-    PIR3bits.TMR4IF = 0;
+ CCPR3H = 0x00;
 
 
-    T4CON = 0x04;
+ CCPTMRS0bits.C3TSEL = 0x1;
+
 }
 
-void TMR4_StartTimer(void)
+void PWM3_LoadDutyValue(uint16_t dutyValue)
 {
 
-    T4CONbits.TMR4ON = 1;
-}
+    CCPR3L = ((dutyValue & 0x03FC)>>2);
 
-void TMR4_StopTimer(void)
-{
 
-    T4CONbits.TMR4ON = 0;
-}
-
-uint8_t TMR4_ReadTimer(void)
-{
-    uint8_t readVal;
-
-    readVal = TMR4;
-
-    return readVal;
-}
-
-void TMR4_WriteTimer(uint8_t timerVal)
-{
-
-    TMR4 = timerVal;
-}
-
-void TMR4_LoadPeriodRegister(uint8_t periodVal)
-{
-   PR4 = periodVal;
-}
-
-_Bool TMR4_HasOverflowOccured(void)
-{
-
-    _Bool status = PIR3bits.TMR4IF;
-    if(status)
-    {
-
-        PIR3bits.TMR4IF = 0;
-    }
-    return status;
+    CCP3CON = ((uint8_t)(CCP3CON & 0xCF) | ((dutyValue & 0x0003)<<4));
 }

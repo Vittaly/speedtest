@@ -1,49 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"2039 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2039: extern volatile unsigned char LATA __attribute__((address(0x10C)));
-[v _LATA `Vuc ~T0 @X0 0 e@268 ]
-"2096
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2096: extern volatile unsigned char LATB __attribute__((address(0x10D)));
-[v _LATB `Vuc ~T0 @X0 0 e@269 ]
-"1152
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 1152: extern volatile unsigned char TRISA __attribute__((address(0x08C)));
-[v _TRISA `Vuc ~T0 @X0 0 e@140 ]
-"1214
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 1214: extern volatile unsigned char TRISB __attribute__((address(0x08D)));
-[v _TRISB `Vuc ~T0 @X0 0 e@141 ]
-"2913
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2913: extern volatile unsigned char ANSELB __attribute__((address(0x18D)));
-[v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
-"2861
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2861: extern volatile unsigned char ANSELA __attribute__((address(0x18C)));
-[v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
-"3516
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 3516: extern volatile unsigned char WPUB __attribute__((address(0x20D)));
-[v _WPUB `Vuc ~T0 @X0 0 e@525 ]
-"3487
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 3487: extern volatile unsigned char WPUA __attribute__((address(0x20C)));
-[v _WPUA `Vuc ~T0 @X0 0 e@524 ]
-"1461
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 1461:     struct {
-[s S83 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S83 . PS0 PS1 PS2 PSA TMR0SE TMR0CS INTEDG nWPUEN ]
-"1471
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 1471:     struct {
-[s S84 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S84 . PS . T0SE T0CS ]
-"1460
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 1460: typedef union {
-[u S82 `S83 1 `S84 1 ]
-[n S82 . . . ]
-"1478
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 1478: extern volatile OPTION_REGbits_t OPTION_REGbits __attribute__((address(0x095)));
-[v _OPTION_REGbits `VS82 ~T0 @X0 0 e@149 ]
-"2779
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2779: extern volatile unsigned char APFCON0 __attribute__((address(0x11D)));
-[v _APFCON0 `Vuc ~T0 @X0 0 e@285 ]
-"2841
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2841: extern volatile unsigned char APFCON1 __attribute__((address(0x11E)));
-[v _APFCON1 `Vuc ~T0 @X0 0 e@286 ]
+[p mainexit ]
+"72 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 72: void SYSTEM_Initialize(void);
+[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+"2045 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2045:     struct {
+[s S110 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S110 . LATA0 LATA1 LATA2 LATA3 LATA4 . LATA6 LATA7 ]
+"2044
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2044: typedef union {
+[u S109 `S110 1 ]
+[n S109 . . ]
+"2056
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2056: extern volatile LATAbits_t LATAbits __attribute__((address(0x10C)));
+[v _LATAbits `VS109 ~T0 @X0 0 e@268 ]
+"124 ./mcc_generated_files/pwm3.h
+[; ;./mcc_generated_files/pwm3.h: 124: void PWM3_LoadDutyValue(uint16_t dutyValue);
+[v _PWM3_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
+"124 ./mcc_generated_files/pwm4.h
+[; ;./mcc_generated_files/pwm4.h: 124: void PWM4_LoadDutyValue(uint16_t dutyValue);
+[v _PWM4_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -518,60 +494,468 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6748
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 6748: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"57 mcc_generated_files/pin_manager.c
-[; ;mcc_generated_files/pin_manager.c: 57: void PIN_MANAGER_Initialize(void)
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 1 ef ]
-"58
-[; ;mcc_generated_files/pin_manager.c: 58: {
+"3 ./cos_tab.h
+[; ;./cos_tab.h: 3: uint16_t const coss[91] = {
+[v _coss `Cus ~T0 @X0 -> 91 `i e ]
+[i _coss
+:U ..
+-> -> 65535 `l `us
+-> -> 65526 `l `us
+-> -> 65496 `l `us
+-> -> 65446 `l `us
+-> -> 65376 `l `us
+-> -> 65287 `l `us
+-> -> 65177 `l `us
+-> -> 65048 `l `us
+-> -> 64898 `l `us
+-> -> 64729 `l `us
+-> -> 64540 `l `us
+-> -> 64332 `l `us
+-> -> 64104 `l `us
+-> -> 63856 `l `us
+-> -> 63589 `l `us
+-> -> 63303 `l `us
+-> -> 62997 `l `us
+-> -> 62672 `l `us
+-> -> 62328 `l `us
+-> -> 61966 `l `us
+-> -> 61584 `l `us
+-> -> 61183 `l `us
+-> -> 60764 `l `us
+-> -> 60326 `l `us
+-> -> 59870 `l `us
+-> -> 59396 `l `us
+-> -> 58903 `l `us
+-> -> 58393 `l `us
+-> -> 57865 `l `us
+-> -> 57319 `l `us
+-> -> 56756 `l `us
+-> -> 56175 `l `us
+-> -> 55578 `l `us
+-> -> 54963 `l `us
+-> -> 54332 `l `us
+-> -> 53684 `l `us
+-> -> 53020 `l `us
+-> -> 52339 `l `us
+-> -> 51643 `l `us
+-> -> 50931 `l `us
+-> -> 50203 `l `us
+-> -> 49461 `l `us
+-> -> 48703 `l `us
+-> -> 47930 `l `us
+-> -> 47143 `l `us
+-> -> 46341 `l `us
+-> -> 45525 `l `us
+-> -> 44695 `l `us
+-> -> 43852 `l `us
+-> -> 42995 `l `us
+-> -> 42126 `l `us
+-> -> 41243 `l `us
+-> -> 40348 `l `us
+-> -> 39441 `l `us
+-> -> 38521 `l `us
+-> -> 37590 `l `us
+-> -> 36647 `l `us
+-> -> 35693 `l `us
+-> -> 34729 `l `us
+-> -> 33754 `l `us
+-> -> 32768 `l `us
+-> -> 31772 `i `us
+-> -> 30767 `i `us
+-> -> 29753 `i `us
+-> -> 28729 `i `us
+-> -> 27697 `i `us
+-> -> 26656 `i `us
+-> -> 25607 `i `us
+-> -> 24550 `i `us
+-> -> 23486 `i `us
+-> -> 22415 `i `us
+-> -> 21336 `i `us
+-> -> 20252 `i `us
+-> -> 19161 `i `us
+-> -> 18064 `i `us
+-> -> 16962 `i `us
+-> -> 15855 `i `us
+-> -> 14742 `i `us
+-> -> 13626 `i `us
+-> -> 12505 `i `us
+-> -> 11380 `i `us
+-> -> 10252 `i `us
+-> -> 9121 `i `us
+-> -> 7987 `i `us
+-> -> 6850 `i `us
+-> -> 5712 `i `us
+-> -> 4572 `i `us
+-> -> 3430 `i `us
+-> -> 2287 `i `us
+-> -> 1144 `i `us
+-> -> 0 `i `us
+..
+]
+"101
+[; ;./cos_tab.h: 101: int16_t cos(int16_t pDegree4, _Bool* pRevers)
+[v _cos `(s ~T0 @X0 1 ef2`s`*a ]
+"112
+[; ;./cos_tab.h: 112: {
 {
-[e :U _PIN_MANAGER_Initialize ]
+[e :U _cos ]
+"101
+[; ;./cos_tab.h: 101: int16_t cos(int16_t pDegree4, _Bool* pRevers)
+[v _pDegree4 `s ~T0 @X0 1 r1 ]
+[v _pRevers `*a ~T0 @X0 1 r2 ]
+"112
+[; ;./cos_tab.h: 112: {
 [f ]
-"62
-[; ;mcc_generated_files/pin_manager.c: 62:     LATA = 0x02;
-[e = _LATA -> -> 2 `i `uc ]
-"63
-[; ;mcc_generated_files/pin_manager.c: 63:     LATB = 0x00;
-[e = _LATB -> -> 0 `i `uc ]
-"68
-[; ;mcc_generated_files/pin_manager.c: 68:     TRISA = 0x21;
-[e = _TRISA -> -> 33 `i `uc ]
-"69
-[; ;mcc_generated_files/pin_manager.c: 69:     TRISB = 0xFF;
-[e = _TRISB -> -> 255 `i `uc ]
-"74
-[; ;mcc_generated_files/pin_manager.c: 74:     ANSELB = 0xFE;
-[e = _ANSELB -> -> 254 `i `uc ]
-"75
-[; ;mcc_generated_files/pin_manager.c: 75:     ANSELA = 0x00;
-[e = _ANSELA -> -> 0 `i `uc ]
-"80
-[; ;mcc_generated_files/pin_manager.c: 80:     WPUB = 0x00;
-[e = _WPUB -> -> 0 `i `uc ]
-"81
-[; ;mcc_generated_files/pin_manager.c: 81:     WPUA = 0x00;
-[e = _WPUA -> -> 0 `i `uc ]
-"82
-[; ;mcc_generated_files/pin_manager.c: 82:     OPTION_REGbits.nWPUEN = 1;
-[e = . . _OPTION_REGbits 0 7 -> -> 1 `i `uc ]
-"89
-[; ;mcc_generated_files/pin_manager.c: 89:     APFCON0 = 0x00;
-[e = _APFCON0 -> -> 0 `i `uc ]
-"90
-[; ;mcc_generated_files/pin_manager.c: 90:     APFCON1 = 0x00;
-[e = _APFCON1 -> -> 0 `i `uc ]
-"97
-[; ;mcc_generated_files/pin_manager.c: 97: }
+"113
+[; ;./cos_tab.h: 113:     uint8_t degree_minor = pDegree4 & 3;
+[v _degree_minor `uc ~T0 @X0 1 a ]
+[e = _degree_minor -> & -> _pDegree4 `i -> 3 `i `uc ]
+"114
+[; ;./cos_tab.h: 114:     uint16_t dg = pDegree4 >> 2;
+[v _dg `us ~T0 @X0 1 a ]
+[e = _dg -> >> -> _pDegree4 `i -> 2 `i `us ]
+"115
+[; ;./cos_tab.h: 115:     *pRevers = (pDegree4 > 360 && pDegree4 < 1080 * 4) ? 1 : 0;
+[e = *U _pRevers -> ? && > -> _pDegree4 `i -> 360 `i < -> _pDegree4 `i * -> 1080 `i -> 4 `i : -> 1 `i -> 0 `i `a ]
+"116
+[; ;./cos_tab.h: 116:     if (dg > 180) dg -= 180;
+[e $ ! > -> _dg `ui -> -> 180 `i `ui 355  ]
+[e =- _dg -> -> 180 `i `us ]
+[e :U 355 ]
+"117
+[; ;./cos_tab.h: 117:     if (dg > 90) dg = 180 - dg;
+[e $ ! > -> _dg `ui -> -> 90 `i `ui 356  ]
+[e = _dg -> - -> -> 180 `i `ui -> _dg `ui `us ]
+[e :U 356 ]
+"119
+[; ;./cos_tab.h: 119:         uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
+[v _steep `us ~T0 @X0 1 a ]
+[e = _steep -> ? > -> _degree_minor `i -> 0 `i : - -> *U + &U _coss * -> - -> _dg `ui -> -> 1 `i `ui `ux -> -> # *U &U _coss `ui `ux `ui -> *U + &U _coss * -> _dg `ux -> -> # *U &U _coss `ui `ux `ui -> -> 0 `i `ui `us ]
+"120
+[; ;./cos_tab.h: 120:         uint16_t val1 = coss[dg];
+[v _val1 `us ~T0 @X0 1 a ]
+[e = _val1 *U + &U _coss * -> _dg `ux -> -> # *U &U _coss `ui `ux ]
+"121
+[; ;./cos_tab.h: 121:         uint8_t val2 = (steep >> 2)* degree_minor;
+[v _val2 `uc ~T0 @X0 1 a ]
+[e = _val2 -> * >> -> _steep `ui -> 2 `i -> _degree_minor `ui `uc ]
+"122
+[; ;./cos_tab.h: 122:         return val1 + val2;
+[e ) -> + -> _val1 `ui -> _val2 `ui `s ]
+[e $UE 354  ]
+"123
+[; ;./cos_tab.h: 123: }
 [e :UE 354 ]
 }
-"99
-[; ;mcc_generated_files/pin_manager.c: 99: void PIN_MANAGER_IOC(void)
-[v _PIN_MANAGER_IOC `(v ~T0 @X0 1 ef ]
-"100
-[; ;mcc_generated_files/pin_manager.c: 100: {
+"126
+[; ;./cos_tab.h: 126:  uint16_t sins[91] =
+[v _sins `us ~T0 @X0 -> 91 `i e ]
+[i _sins
+:U ..
+-> -> 0 `i `us
+-> -> 1144 `i `us
+-> -> 2287 `i `us
+-> -> 3430 `i `us
+-> -> 4572 `i `us
+-> -> 5712 `i `us
+-> -> 6850 `i `us
+-> -> 7987 `i `us
+-> -> 9121 `i `us
+-> -> 10252 `i `us
+-> -> 11380 `i `us
+-> -> 12505 `i `us
+-> -> 13626 `i `us
+-> -> 14742 `i `us
+-> -> 15855 `i `us
+-> -> 16962 `i `us
+-> -> 18064 `i `us
+-> -> 19161 `i `us
+-> -> 20252 `i `us
+-> -> 21336 `i `us
+-> -> 22415 `i `us
+-> -> 23486 `i `us
+-> -> 24550 `i `us
+-> -> 25607 `i `us
+-> -> 26656 `i `us
+-> -> 27697 `i `us
+-> -> 28729 `i `us
+-> -> 29753 `i `us
+-> -> 30767 `i `us
+-> -> 31772 `i `us
+-> -> 32768 `l `us
+-> -> 33754 `l `us
+-> -> 34729 `l `us
+-> -> 35693 `l `us
+-> -> 36647 `l `us
+-> -> 37590 `l `us
+-> -> 38521 `l `us
+-> -> 39441 `l `us
+-> -> 40348 `l `us
+-> -> 41243 `l `us
+-> -> 42126 `l `us
+-> -> 42995 `l `us
+-> -> 43852 `l `us
+-> -> 44695 `l `us
+-> -> 45525 `l `us
+-> -> 46341 `l `us
+-> -> 47143 `l `us
+-> -> 47930 `l `us
+-> -> 48703 `l `us
+-> -> 49461 `l `us
+-> -> 50203 `l `us
+-> -> 50931 `l `us
+-> -> 51643 `l `us
+-> -> 52339 `l `us
+-> -> 53020 `l `us
+-> -> 53684 `l `us
+-> -> 54332 `l `us
+-> -> 54963 `l `us
+-> -> 55578 `l `us
+-> -> 56175 `l `us
+-> -> 56756 `l `us
+-> -> 57319 `l `us
+-> -> 57865 `l `us
+-> -> 58393 `l `us
+-> -> 58903 `l `us
+-> -> 59396 `l `us
+-> -> 59870 `l `us
+-> -> 60326 `l `us
+-> -> 60764 `l `us
+-> -> 61183 `l `us
+-> -> 61584 `l `us
+-> -> 61966 `l `us
+-> -> 62328 `l `us
+-> -> 62672 `l `us
+-> -> 62997 `l `us
+-> -> 63303 `l `us
+-> -> 63589 `l `us
+-> -> 63856 `l `us
+-> -> 64104 `l `us
+-> -> 64332 `l `us
+-> -> 64540 `l `us
+-> -> 64729 `l `us
+-> -> 64898 `l `us
+-> -> 65048 `l `us
+-> -> 65177 `l `us
+-> -> 65287 `l `us
+-> -> 65376 `l `us
+-> -> 65446 `l `us
+-> -> 65496 `l `us
+-> -> 65526 `l `us
+-> -> 65535 `l `us
+..
+]
+"219
+[; ;./cos_tab.h: 219:  uint16_t sin(int16_t pDegree4, _Bool* pRevers)
+[v _sin `(us ~T0 @X0 1 ef2`s`*a ]
+"230
+[; ;./cos_tab.h: 230: {
 {
-[e :U _PIN_MANAGER_IOC ]
+[e :U _sin ]
+"219
+[; ;./cos_tab.h: 219:  uint16_t sin(int16_t pDegree4, _Bool* pRevers)
+[v _pDegree4 `s ~T0 @X0 1 r1 ]
+[v _pRevers `*a ~T0 @X0 1 r2 ]
+"230
+[; ;./cos_tab.h: 230: {
 [f ]
-"101
-[; ;mcc_generated_files/pin_manager.c: 101: }
-[e :UE 355 ]
+"231
+[; ;./cos_tab.h: 231:     uint8_t degree_minor = pDegree4 & 3;
+[v _degree_minor `uc ~T0 @X0 1 a ]
+[e = _degree_minor -> & -> _pDegree4 `i -> 3 `i `uc ]
+"232
+[; ;./cos_tab.h: 232:     uint16_t dg = pDegree4 >> 2;
+[v _dg `us ~T0 @X0 1 a ]
+[e = _dg -> >> -> _pDegree4 `i -> 2 `i `us ]
+"233
+[; ;./cos_tab.h: 233:     *pRevers = dg > 180 ? 1 : 0;
+[e = *U _pRevers -> ? > -> _dg `ui -> -> 180 `i `ui : -> 1 `i -> 0 `i `a ]
+"234
+[; ;./cos_tab.h: 234:     if (dg > 180) dg -= 180;
+[e $ ! > -> _dg `ui -> -> 180 `i `ui 358  ]
+[e =- _dg -> -> 180 `i `us ]
+[e :U 358 ]
+"235
+[; ;./cos_tab.h: 235:     if (dg > 90) dg = 180 - dg;
+[e $ ! > -> _dg `ui -> -> 90 `i `ui 359  ]
+[e = _dg -> - -> -> 180 `i `ui -> _dg `ui `us ]
+[e :U 359 ]
+"236
+[; ;./cos_tab.h: 236:     uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0;
+[v _steep `us ~T0 @X0 1 a ]
+[e = _steep -> ? > -> _degree_minor `i -> 0 `i : - -> *U + &U _sins * -> _dg `ux -> -> # *U &U _sins `ui `ux `ui -> *U + &U _sins * -> - -> _dg `ui -> -> 1 `i `ui `ux -> -> # *U &U _sins `ui `ux `ui -> -> 0 `i `ui `us ]
+"237
+[; ;./cos_tab.h: 237:     uint16_t val1 = sins[dg];
+[v _val1 `us ~T0 @X0 1 a ]
+[e = _val1 *U + &U _sins * -> _dg `ux -> -> # *U &U _sins `ui `ux ]
+"238
+[; ;./cos_tab.h: 238:     uint8_t val2 = (steep >> 2)* degree_minor;
+[v _val2 `uc ~T0 @X0 1 a ]
+[e = _val2 -> * >> -> _steep `ui -> 2 `i -> _degree_minor `ui `uc ]
+"239
+[; ;./cos_tab.h: 239:     return val1 - val2;
+[e ) -> - -> _val1 `ui -> _val2 `ui `us ]
+[e $UE 357  ]
+"240
+[; ;./cos_tab.h: 240: }
+[e :UE 357 ]
+}
+"242
+[; ;./cos_tab.h: 242:  const int16_t START_ARROW_POSITION = 180 << 2;
+[v _START_ARROW_POSITION `Cs ~T0 @X0 1 e ]
+[i _START_ARROW_POSITION
+-> << -> 180 `i -> 2 `i `s
+]
+"243
+[; ;./cos_tab.h: 243:  const uint8_t DegreePerKm7 = 120;
+[v _DegreePerKm7 `Cuc ~T0 @X0 1 e ]
+[i _DegreePerKm7
+-> -> 120 `i `uc
+]
+"245
+[; ;./cos_tab.h: 245:  int getArrowDegree4(uint32_t p_speed4)
+[v _getArrowDegree4 `(i ~T0 @X0 1 ef1`ul ]
+"247
+[; ;./cos_tab.h: 247:     {
+{
+[e :U _getArrowDegree4 ]
+"245
+[; ;./cos_tab.h: 245:  int getArrowDegree4(uint32_t p_speed4)
+[v _p_speed4 `ul ~T0 @X0 1 r1 ]
+"247
+[; ;./cos_tab.h: 247:     {
+[f ]
+"248
+[; ;./cos_tab.h: 248:      uint32_t r1 = p_speed4 * DegreePerKm7;
+[v _r1 `ul ~T0 @X0 1 a ]
+[e = _r1 * _p_speed4 -> _DegreePerKm7 `ul ]
+"249
+[; ;./cos_tab.h: 249:      uint16_t r2 = r1 >> 7;
+[v _r2 `us ~T0 @X0 1 a ]
+[e = _r2 -> >> _r1 -> 7 `i `us ]
+"250
+[; ;./cos_tab.h: 250:      return (r2 > START_ARROW_POSITION) ? (360 << 2) + START_ARROW_POSITION - r2 : START_ARROW_POSITION - r2;
+[e ) -> ? > -> _r2 `ui -> _START_ARROW_POSITION `ui : - -> + << -> 360 `i -> 2 `i -> _START_ARROW_POSITION `i `ui -> _r2 `ui - -> _START_ARROW_POSITION `ui -> _r2 `ui `i ]
+[e $UE 360  ]
+"251
+[; ;./cos_tab.h: 251:     }
+[e :UE 360 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"50 main.c
+[; ;main.c: 50: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"51
+[; ;main.c: 51: {
+{
+[e :U _main ]
+[f ]
+"53
+[; ;main.c: 53:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"70
+[; ;main.c: 70:     int16_t arrow_degree = START_ARROW_POSITION;
+[v _arrow_degree `s ~T0 @X0 1 a ]
+[e = _arrow_degree _START_ARROW_POSITION ]
+"71
+[; ;main.c: 71:     int16_t speed4 = 0;
+[v _speed4 `s ~T0 @X0 1 a ]
+[e = _speed4 -> -> 0 `i `s ]
+"72
+[; ;main.c: 72:     _Bool rewersHor;
+[v _rewersHor `a ~T0 @X0 1 a ]
+"73
+[; ;main.c: 73:     _Bool rewersVert;
+[v _rewersVert `a ~T0 @X0 1 a ]
+"74
+[; ;main.c: 74:     uint16_t hor_pwm_duty;
+[v _hor_pwm_duty `us ~T0 @X0 1 a ]
+"75
+[; ;main.c: 75:     uint16_t vert_pwm_duty;
+[v _vert_pwm_duty `us ~T0 @X0 1 a ]
+"76
+[; ;main.c: 76:     _Bool speed_up = 1;
+[v _speed_up `a ~T0 @X0 1 a ]
+[e = _speed_up -> -> 1 `i `a ]
+"80
+[; ;main.c: 80:     while (1)
+[e :U 363 ]
+"81
+[; ;main.c: 81:     {
+{
+"82
+[; ;main.c: 82:       arrow_degree = getArrowDegree4(speed4);
+[e = _arrow_degree -> ( _getArrowDegree4 (1 -> -> _speed4 `l `ul `s ]
+"83
+[; ;main.c: 83:       hor_pwm_duty = cos(arrow_degree, &rewersHor);
+[e = _hor_pwm_duty -> ( _cos (2 , _arrow_degree &U _rewersHor `us ]
+"84
+[; ;main.c: 84:       if (rewersHor) do { LATAbits.LATA1 = 1; } while(0);
+[e $ ! != -> _rewersHor `i -> 0 `i 365  ]
+[e :U 368 ]
+{
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 367 ]
+[e $U 369  ]
+"85
+[; ;main.c: 85:       else do { LATAbits.LATA1 = 0; } while(0);
+[e :U 365 ]
+[e :U 372 ]
+{
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+}
+[e :U 371 ]
+[e :U 369 ]
+"86
+[; ;main.c: 86:       PWM3_LoadDutyValue(hor_pwm_duty>>6);
+[e ( _PWM3_LoadDutyValue (1 -> >> -> _hor_pwm_duty `ui -> 6 `i `us ]
+"89
+[; ;main.c: 89:       vert_pwm_duty = sin(arrow_degree, &rewersVert);
+[e = _vert_pwm_duty ( _sin (2 , _arrow_degree &U _rewersVert ]
+"90
+[; ;main.c: 90:       if (rewersVert) do { LATAbits.LATA2 = 1; } while(0);
+[e $ ! != -> _rewersVert `i -> 0 `i 373  ]
+[e :U 376 ]
+{
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+}
+[e :U 375 ]
+[e $U 377  ]
+"91
+[; ;main.c: 91:       else do { LATAbits.LATA2 = 0; } while(0);
+[e :U 373 ]
+[e :U 380 ]
+{
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+}
+[e :U 379 ]
+[e :U 377 ]
+"92
+[; ;main.c: 92:       PWM4_LoadDutyValue(vert_pwm_duty >> 6);
+[e ( _PWM4_LoadDutyValue (1 -> >> -> _vert_pwm_duty `ui -> 6 `i `us ]
+"93
+[; ;main.c: 93:       speed4 += (speed_up?1:-1) << 0;
+[e =+ _speed4 -> << ? != -> _speed_up `i -> 0 `i : -> 1 `i -U -> 1 `i -> 0 `i `s ]
+"94
+[; ;main.c: 94:       if (speed4 > 220 * 4) speed_up = 0;
+[e $ ! > -> _speed4 `i * -> 220 `i -> 4 `i 381  ]
+[e = _speed_up -> -> 0 `i `a ]
+[e $U 382  ]
+"95
+[; ;main.c: 95:       else if (speed4 <=0 ) speed_up = 1;
+[e :U 381 ]
+[e $ ! <= -> _speed4 `i -> 0 `i 383  ]
+[e = _speed_up -> -> 1 `i `a ]
+[e :U 383 ]
+[e :U 382 ]
+"98
+[; ;main.c: 98:     }
+}
+[e :U 362 ]
+[e $U 363  ]
+[e :U 364 ]
+"99
+[; ;main.c: 99: }
+[e :UE 361 ]
 }

@@ -1,13 +1,13 @@
 ### HEXMate logfile and output summary ###
 ### Memory Usage ###
  Unused memory ranges:
-  8h - 713h
+  8h - 71Fh
   1172h - 1000Dh
   10012h - 1003Fh
   
- dist/default/production\SpeedoTest.production.hex ranges:
+ dist/default/debug\SpeedoTest.debug.hex ranges:
   0h - 7h
-  714h - 1171h
+  720h - 1171h
   1000Eh - 10011h
   
 ### Hex Memory Map ###
@@ -21,9 +21,9 @@
   T = Trailing code
   & = Find & replace opcode
   X = Find & delete opcode
-  1 = dist/default/production\SpeedoTest.production.hex
+  1 = dist/default/debug\SpeedoTest.debug.hex
 00000000: 11111111--------------------------------------------------------
-00000700: --------------------11111111111111111111111111111111111111111111
+00000700: --------------------------------11111111111111111111111111111111
 00000740: 1111111111111111111111111111111111111111111111111111111111111111
 00000780: 1111111111111111111111111111111111111111111111111111111111111111
 000007C0: 1111111111111111111111111111111111111111111111111111111111111111

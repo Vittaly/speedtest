@@ -106,17 +106,20 @@ int16_t cos(int16_t pDegree4, bool* pRevers) //
   @Description
 
   @Preconditions
-
-  @Param
+2
+  @Param   
  p_degree - degree value * 2*/
 {
     uint8_t degree_minor = pDegree4 & 3;
     uint16_t dg = pDegree4 >> 2;
     *pRevers = (pDegree4 > 360 && pDegree4 < 1080 * 4) ? true : false; // if 270 < degree > 90
     if (dg > 180) dg -= 180;  // move from third or fourth sector to first or second
-    if (dg > 90) dg = 180 - dg; // move from second to first sector
-    uint16_t steep = coss[dg] - coss[dg+1];
-    return coss[dg] - (steep >> 2)* degree_minor;
+    if (dg > 90) dg = 180 - dg; // move from second to first sectorgd
+    
+        uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
+        uint16_t val1 = coss[dg];
+        uint8_t  val2 = (steep >> 2)* degree_minor;
+        return val1 + val2;
 }
 
 
@@ -230,8 +233,10 @@ int16_t cos(int16_t pDegree4, bool* pRevers) //
     *pRevers = dg > 180 ? true : false; 
     if (dg > 180) dg -= 180;  // move from third or fourth sector to first or second
     if (dg > 90) dg = 180 - dg; // move from second to first sector
-    uint16_t steep = sins[dg+1] - sins[dg]; // get delta to next value in stream
-    return sins[dg] + (steep >> 2)* degree_minor; // correcting value to steep devided on minor part
+    uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0; // get delta to next value in stream
+    uint16_t val1  = sins[dg];
+    uint8_t  val2 = (steep >> 2)* degree_minor;
+    return val1 - val2; // correcting value to steep devided on minor part
 }
  
  const int16_t START_ARROW_POSITION = 180 << 2; // degree * 4

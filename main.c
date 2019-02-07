@@ -79,8 +79,6 @@ void main(void)
 
     while (1)
     {
-        if (arrow_degree == 478)
-            arrow_degree = 478;
       arrow_degree = getArrowDegree4(speed4);
       hor_pwm_duty = cos(arrow_degree, &rewersHor);
       if (rewersHor)  Invert_hor_SetHigh();
@@ -95,7 +93,7 @@ void main(void)
       speed4 += (speed_up?1:-1) << 0;
       if (speed4 > 220 * 4) speed_up = false;
       else if (speed4 <=0 ) speed_up = true;
-      __delay_ms(100);
+     // __delay_ms(100);
       
     }
 }

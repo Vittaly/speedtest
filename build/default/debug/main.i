@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/tmr4.c"
+# 1 "main.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/tmr4.c" 2
-# 51 "mcc_generated_files/tmr4.c"
+# 1 "main.c" 2
+# 44 "main.c"
+# 1 "./mcc_generated_files/mcc.h" 1
+# 49 "./mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4238,10 +4240,18 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 51 "mcc_generated_files/tmr4.c" 2
+# 49 "./mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/tmr4.h" 1
-# 54 "mcc_generated_files/tmr4.h"
+# 1 "./mcc_generated_files/device_config.h" 1
+# 50 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/pin_manager.h" 1
+# 134 "./mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
+# 146 "./mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_IOC(void);
+# 51 "./mcc_generated_files/mcc.h" 2
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4313,83 +4323,338 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
-# 54 "mcc_generated_files/tmr4.h" 2
+# 52 "./mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
-# 55 "mcc_generated_files/tmr4.h" 2
-# 103 "mcc_generated_files/tmr4.h"
+# 53 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/pwm3.h" 1
+# 97 "./mcc_generated_files/pwm3.h"
+void PWM3_Initialize(void);
+# 124 "./mcc_generated_files/pwm3.h"
+void PWM3_LoadDutyValue(uint16_t dutyValue);
+# 54 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/tmr6.h" 1
+# 103 "./mcc_generated_files/tmr6.h"
+void TMR6_Initialize(void);
+# 132 "./mcc_generated_files/tmr6.h"
+void TMR6_StartTimer(void);
+# 164 "./mcc_generated_files/tmr6.h"
+void TMR6_StopTimer(void);
+# 199 "./mcc_generated_files/tmr6.h"
+uint8_t TMR6_ReadTimer(void);
+# 238 "./mcc_generated_files/tmr6.h"
+void TMR6_WriteTimer(uint8_t timerVal);
+# 290 "./mcc_generated_files/tmr6.h"
+void TMR6_LoadPeriodRegister(uint8_t periodVal);
+# 325 "./mcc_generated_files/tmr6.h"
+_Bool TMR6_HasOverflowOccured(void);
+# 55 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/tmr4.h" 1
+# 103 "./mcc_generated_files/tmr4.h"
 void TMR4_Initialize(void);
-# 132 "mcc_generated_files/tmr4.h"
+# 132 "./mcc_generated_files/tmr4.h"
 void TMR4_StartTimer(void);
-# 164 "mcc_generated_files/tmr4.h"
+# 164 "./mcc_generated_files/tmr4.h"
 void TMR4_StopTimer(void);
-# 199 "mcc_generated_files/tmr4.h"
+# 199 "./mcc_generated_files/tmr4.h"
 uint8_t TMR4_ReadTimer(void);
-# 238 "mcc_generated_files/tmr4.h"
+# 238 "./mcc_generated_files/tmr4.h"
 void TMR4_WriteTimer(uint8_t timerVal);
-# 290 "mcc_generated_files/tmr4.h"
+# 290 "./mcc_generated_files/tmr4.h"
 void TMR4_LoadPeriodRegister(uint8_t periodVal);
-# 325 "mcc_generated_files/tmr4.h"
+# 325 "./mcc_generated_files/tmr4.h"
 _Bool TMR4_HasOverflowOccured(void);
-# 52 "mcc_generated_files/tmr4.c" 2
-# 62 "mcc_generated_files/tmr4.c"
-void TMR4_Initialize(void)
+# 56 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/pwm4.h" 1
+# 97 "./mcc_generated_files/pwm4.h"
+void PWM4_Initialize(void);
+# 124 "./mcc_generated_files/pwm4.h"
+void PWM4_LoadDutyValue(uint16_t dutyValue);
+# 57 "./mcc_generated_files/mcc.h" 2
+# 72 "./mcc_generated_files/mcc.h"
+void SYSTEM_Initialize(void);
+# 85 "./mcc_generated_files/mcc.h"
+void OSCILLATOR_Initialize(void);
+# 97 "./mcc_generated_files/mcc.h"
+void WDT_Initialize(void);
+# 44 "main.c" 2
+
+# 1 "./cos_tab.h" 1
+
+
+uint16_t const coss[91] = {
+
+
+
+
+
+65535,
+65526,
+65496,
+65446,
+65376,
+65287,
+65177,
+65048,
+64898,
+64729,
+64540,
+64332,
+64104,
+63856,
+63589,
+63303,
+62997,
+62672,
+62328,
+61966,
+61584,
+61183,
+60764,
+60326,
+59870,
+59396,
+58903,
+58393,
+57865,
+57319,
+56756,
+56175,
+55578,
+54963,
+54332,
+53684,
+53020,
+52339,
+51643,
+50931,
+50203,
+49461,
+48703,
+47930,
+47143,
+46341,
+45525,
+44695,
+43852,
+42995,
+42126,
+41243,
+40348,
+39441,
+38521,
+37590,
+36647,
+35693,
+34729,
+33754,
+32768,
+31772,
+30767,
+29753,
+28729,
+27697,
+26656,
+25607,
+24550,
+23486,
+22415,
+21336,
+20252,
+19161,
+18064,
+16962,
+15855,
+14742,
+13626,
+12505,
+11380,
+10252,
+9121,
+7987,
+6850,
+5712,
+4572,
+3430,
+2287,
+1144,
+0};
+
+int16_t cos(int16_t pDegree4, _Bool* pRevers)
+# 112 "./cos_tab.h"
 {
+    uint8_t degree_minor = pDegree4 & 3;
+    uint16_t dg = pDegree4 >> 2;
+    *pRevers = (pDegree4 > 360 && pDegree4 < 1080 * 4) ? 1 : 0;
+    if (dg > 180) dg -= 180;
+    if (dg > 90) dg = 180 - dg;
 
-
-
-    PR4 = 0xFF;
-
-
-    TMR4 = 0x00;
-
-
-    PIR3bits.TMR4IF = 0;
-
-
-    T4CON = 0x04;
+        uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
+        uint16_t val1 = coss[dg];
+        uint8_t val2 = (steep >> 2)* degree_minor;
+        return val1 + val2;
 }
 
-void TMR4_StartTimer(void)
-{
 
-    T4CONbits.TMR4ON = 1;
+ uint16_t sins[91] =
+ {0,
+     1144,
+2287,
+3430,
+4572,
+5712,
+6850,
+7987,
+9121,
+10252,
+11380,
+12505,
+13626,
+14742,
+15855,
+16962,
+18064,
+19161,
+20252,
+21336,
+22415,
+23486,
+24550,
+25607,
+26656,
+27697,
+28729,
+29753,
+30767,
+31772,
+32768,
+33754,
+34729,
+35693,
+36647,
+37590,
+38521,
+39441,
+40348,
+41243,
+42126,
+42995,
+43852,
+44695,
+45525,
+46341,
+47143,
+47930,
+48703,
+49461,
+50203,
+50931,
+51643,
+52339,
+53020,
+53684,
+54332,
+54963,
+55578,
+56175,
+56756,
+57319,
+57865,
+58393,
+58903,
+59396,
+59870,
+60326,
+60764,
+61183,
+61584,
+61966,
+62328,
+62672,
+62997,
+63303,
+63589,
+63856,
+64104,
+64332,
+64540,
+64729,
+64898,
+65048,
+65177,
+65287,
+65376,
+65446,
+65496,
+65526,
+65535};
+
+ uint16_t sin(int16_t pDegree4, _Bool* pRevers)
+# 230 "./cos_tab.h"
+{
+    uint8_t degree_minor = pDegree4 & 3;
+    uint16_t dg = pDegree4 >> 2;
+    *pRevers = dg > 180 ? 1 : 0;
+    if (dg > 180) dg -= 180;
+    if (dg > 90) dg = 180 - dg;
+    uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0;
+    uint16_t val1 = sins[dg];
+    uint8_t val2 = (steep >> 2)* degree_minor;
+    return val1 - val2;
 }
 
-void TMR4_StopTimer(void)
-{
+ const int16_t START_ARROW_POSITION = 180 << 2;
+ const uint8_t DegreePerKm7 = 120;
 
-    T4CONbits.TMR4ON = 0;
-}
+ int getArrowDegree4(uint32_t p_speed4)
 
-uint8_t TMR4_ReadTimer(void)
-{
-    uint8_t readVal;
-
-    readVal = TMR4;
-
-    return readVal;
-}
-
-void TMR4_WriteTimer(uint8_t timerVal)
-{
-
-    TMR4 = timerVal;
-}
-
-void TMR4_LoadPeriodRegister(uint8_t periodVal)
-{
-   PR4 = periodVal;
-}
-
-_Bool TMR4_HasOverflowOccured(void)
-{
-
-    _Bool status = PIR3bits.TMR4IF;
-    if(status)
     {
-
-        PIR3bits.TMR4IF = 0;
+     uint32_t r1 = p_speed4 * DegreePerKm7;
+     uint16_t r2 = r1 >> 7;
+     return (r2 > START_ARROW_POSITION) ? (360 << 2) + START_ARROW_POSITION - r2 : START_ARROW_POSITION - r2;
     }
-    return status;
+# 45 "main.c" 2
+
+
+
+
+
+void main(void)
+{
+
+    SYSTEM_Initialize();
+# 70 "main.c"
+    int16_t arrow_degree = START_ARROW_POSITION;
+    int16_t speed4 = 0;
+    _Bool rewersHor;
+    _Bool rewersVert;
+    uint16_t hor_pwm_duty;
+    uint16_t vert_pwm_duty;
+    _Bool speed_up = 1;
+
+
+
+    while (1)
+    {
+      arrow_degree = getArrowDegree4(speed4);
+      hor_pwm_duty = cos(arrow_degree, &rewersHor);
+      if (rewersHor) do { LATAbits.LATA1 = 1; } while(0);
+      else do { LATAbits.LATA1 = 0; } while(0);
+      PWM3_LoadDutyValue(hor_pwm_duty>>6);
+
+
+      vert_pwm_duty = sin(arrow_degree, &rewersVert);
+      if (rewersVert) do { LATAbits.LATA2 = 1; } while(0);
+      else do { LATAbits.LATA2 = 0; } while(0);
+      PWM4_LoadDutyValue(vert_pwm_duty >> 6);
+      speed4 += (speed_up?1:-1) << 0;
+      if (speed4 > 220 * 4) speed_up = 0;
+      else if (speed4 <=0 ) speed_up = 1;
+
+
+    }
 }

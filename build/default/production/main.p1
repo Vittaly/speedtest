@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"73 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 73: void SYSTEM_Initialize(void);
+"72 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 72: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "2045 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 2045:     struct {
@@ -872,88 +872,81 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 81:     {
 {
 "82
-[; ;main.c: 82:         if (arrow_degree == 478)
-[e $ ! == -> _arrow_degree `i -> 478 `i 365  ]
-"83
-[; ;main.c: 83:             arrow_degree = 478;
-[e = _arrow_degree -> -> 478 `i `s ]
-[e :U 365 ]
-"84
-[; ;main.c: 84:       arrow_degree = getArrowDegree4(speed4);
+[; ;main.c: 82:       arrow_degree = getArrowDegree4(speed4);
 [e = _arrow_degree -> ( _getArrowDegree4 (1 -> -> _speed4 `l `ul `s ]
-"85
-[; ;main.c: 85:       hor_pwm_duty = cos(arrow_degree, &rewersHor);
+"83
+[; ;main.c: 83:       hor_pwm_duty = cos(arrow_degree, &rewersHor);
 [e = _hor_pwm_duty -> ( _cos (2 , _arrow_degree &U _rewersHor `us ]
-"86
-[; ;main.c: 86:       if (rewersHor) do { LATAbits.LATA1 = 1; } while(0);
-[e $ ! != -> _rewersHor `i -> 0 `i 366  ]
-[e :U 369 ]
+"84
+[; ;main.c: 84:       if (rewersHor) do { LATAbits.LATA1 = 1; } while(0);
+[e $ ! != -> _rewersHor `i -> 0 `i 365  ]
+[e :U 368 ]
 {
 [e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 }
-[e :U 368 ]
-[e $U 370  ]
-"87
-[; ;main.c: 87:       else do { LATAbits.LATA1 = 0; } while(0);
-[e :U 366 ]
-[e :U 373 ]
+[e :U 367 ]
+[e $U 369  ]
+"85
+[; ;main.c: 85:       else do { LATAbits.LATA1 = 0; } while(0);
+[e :U 365 ]
+[e :U 372 ]
 {
 [e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
 }
-[e :U 372 ]
-[e :U 370 ]
-"88
-[; ;main.c: 88:       PWM3_LoadDutyValue(hor_pwm_duty>>6);
+[e :U 371 ]
+[e :U 369 ]
+"86
+[; ;main.c: 86:       PWM3_LoadDutyValue(hor_pwm_duty>>6);
 [e ( _PWM3_LoadDutyValue (1 -> >> -> _hor_pwm_duty `ui -> 6 `i `us ]
-"91
-[; ;main.c: 91:       vert_pwm_duty = sin(arrow_degree, &rewersVert);
+"89
+[; ;main.c: 89:       vert_pwm_duty = sin(arrow_degree, &rewersVert);
 [e = _vert_pwm_duty ( _sin (2 , _arrow_degree &U _rewersVert ]
-"92
-[; ;main.c: 92:       if (rewersVert) do { LATAbits.LATA2 = 1; } while(0);
-[e $ ! != -> _rewersVert `i -> 0 `i 374  ]
-[e :U 377 ]
+"90
+[; ;main.c: 90:       if (rewersVert) do { LATAbits.LATA2 = 1; } while(0);
+[e $ ! != -> _rewersVert `i -> 0 `i 373  ]
+[e :U 376 ]
 {
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 }
-[e :U 376 ]
-[e $U 378  ]
-"93
-[; ;main.c: 93:       else do { LATAbits.LATA2 = 0; } while(0);
-[e :U 374 ]
-[e :U 381 ]
+[e :U 375 ]
+[e $U 377  ]
+"91
+[; ;main.c: 91:       else do { LATAbits.LATA2 = 0; } while(0);
+[e :U 373 ]
+[e :U 380 ]
 {
 [e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
 }
-[e :U 380 ]
-[e :U 378 ]
-"94
-[; ;main.c: 94:       PWM4_LoadDutyValue(vert_pwm_duty >> 6);
+[e :U 379 ]
+[e :U 377 ]
+"92
+[; ;main.c: 92:       PWM4_LoadDutyValue(vert_pwm_duty >> 6);
 [e ( _PWM4_LoadDutyValue (1 -> >> -> _vert_pwm_duty `ui -> 6 `i `us ]
-"95
-[; ;main.c: 95:       speed4 += (speed_up?1:-1) << 0;
+"93
+[; ;main.c: 93:       speed4 += (speed_up?1:-1) << 0;
 [e =+ _speed4 -> << ? != -> _speed_up `i -> 0 `i : -> 1 `i -U -> 1 `i -> 0 `i `s ]
-"96
-[; ;main.c: 96:       if (speed4 > 220 * 4) speed_up = 0;
-[e $ ! > -> _speed4 `i * -> 220 `i -> 4 `i 382  ]
+"94
+[; ;main.c: 94:       if (speed4 > 220 * 4) speed_up = 0;
+[e $ ! > -> _speed4 `i * -> 220 `i -> 4 `i 381  ]
 [e = _speed_up -> -> 0 `i `a ]
-[e $U 383  ]
-"97
-[; ;main.c: 97:       else if (speed4 <=0 ) speed_up = 1;
-[e :U 382 ]
-[e $ ! <= -> _speed4 `i -> 0 `i 384  ]
+[e $U 382  ]
+"95
+[; ;main.c: 95:       else if (speed4 <=0 ) speed_up = 1;
+[e :U 381 ]
+[e $ ! <= -> _speed4 `i -> 0 `i 383  ]
 [e = _speed_up -> -> 1 `i `a ]
-[e :U 384 ]
 [e :U 383 ]
-"98
-[; ;main.c: 98:       _delay((unsigned long)((100)*(8000000/4000.0)));
+[e :U 382 ]
+"96
+[; ;main.c: 96:       _delay((unsigned long)((100)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"100
-[; ;main.c: 100:     }
+"98
+[; ;main.c: 98:     }
 }
 [e :U 362 ]
 [e $U 363  ]
 [e :U 364 ]
-"101
-[; ;main.c: 101: }
+"99
+[; ;main.c: 99: }
 [e :UE 361 ]
 }
