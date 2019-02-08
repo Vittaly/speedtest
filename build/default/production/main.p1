@@ -17,13 +17,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "124 ./mcc_generated_files/pwm3.h
 [; ;./mcc_generated_files/pwm3.h: 124: void PWM3_LoadDutyValue(uint16_t dutyValue);
 [v _PWM3_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
+"73 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\stdlib.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\stdlib.h: 73: int abs (int);
+[v _abs `(i ~T0 @X0 0 ef1`i ]
 "124 ./mcc_generated_files/pwm4.h
 [; ;./mcc_generated_files/pwm4.h: 124: void PWM4_LoadDutyValue(uint16_t dutyValue);
 [v _PWM4_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
-[v F2426 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
-[v __delay `JF2426 ~T0 @X0 0 e ]
-[p i __delay ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1827.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -597,16 +596,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "101
-[; ;./cos_tab.h: 101: int16_t cos(int16_t pDegree4, _Bool* pRevers)
-[v _cos `(s ~T0 @X0 1 ef2`s`*a ]
+[; ;./cos_tab.h: 101: int16_t cos15(int16_t pDegree4)
+[v _cos15 `(s ~T0 @X0 1 ef1`s ]
 "112
 [; ;./cos_tab.h: 112: {
 {
-[e :U _cos ]
+[e :U _cos15 ]
 "101
-[; ;./cos_tab.h: 101: int16_t cos(int16_t pDegree4, _Bool* pRevers)
+[; ;./cos_tab.h: 101: int16_t cos15(int16_t pDegree4)
 [v _pDegree4 `s ~T0 @X0 1 r1 ]
-[v _pRevers `*a ~T0 @X0 1 r2 ]
 "112
 [; ;./cos_tab.h: 112: {
 [f ]
@@ -618,9 +616,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./cos_tab.h: 114:     uint16_t dg = pDegree4 >> 2;
 [v _dg `us ~T0 @X0 1 a ]
 [e = _dg -> >> -> _pDegree4 `i -> 2 `i `us ]
-"115
-[; ;./cos_tab.h: 115:     *pRevers = (pDegree4 > 360 && pDegree4 < 1080 * 4) ? 1 : 0;
-[e = *U _pRevers -> ? && > -> _pDegree4 `i -> 360 `i < -> _pDegree4 `i * -> 1080 `i -> 4 `i : -> 1 `i -> 0 `i `a ]
 "116
 [; ;./cos_tab.h: 116:     if (dg > 180) dg -= 180;
 [e $ ! > -> _dg `ui -> -> 180 `i `ui 355  ]
@@ -631,20 +626,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! > -> _dg `ui -> -> 90 `i `ui 356  ]
 [e = _dg -> - -> -> 180 `i `ui -> _dg `ui `us ]
 [e :U 356 ]
-"118
-[; ;./cos_tab.h: 118:     uint16_t steep = coss[dg] - coss[dg+1];
-[v _steep `us ~T0 @X0 1 a ]
-[e = _steep -> - -> *U + &U _coss * -> _dg `ux -> -> # *U &U _coss `ui `ux `ui -> *U + &U _coss * -> + -> _dg `ui -> -> 1 `i `ui `ux -> -> # *U &U _coss `ui `ux `ui `us ]
 "119
-[; ;./cos_tab.h: 119:     return coss[dg] - (steep >> 2)* degree_minor;
-[e ) -> - -> *U + &U _coss * -> _dg `ux -> -> # *U &U _coss `ui `ux `ui * >> -> _steep `ui -> 2 `i -> _degree_minor `ui `s ]
-[e $UE 354  ]
+[; ;./cos_tab.h: 119:         uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
+[v _steep `us ~T0 @X0 1 a ]
+[e = _steep -> ? > -> _degree_minor `i -> 0 `i : - -> *U + &U _coss * -> - -> _dg `ui -> -> 1 `i `ui `ux -> -> # *U &U _coss `ui `ux `ui -> *U + &U _coss * -> _dg `ux -> -> # *U &U _coss `ui `ux `ui -> -> 0 `i `ui `us ]
 "120
-[; ;./cos_tab.h: 120: }
+[; ;./cos_tab.h: 120:         int16_t val = (coss[dg] >> 1) + (steep >> 2)* degree_minor;
+[v _val `s ~T0 @X0 1 a ]
+[e = _val -> + >> -> *U + &U _coss * -> _dg `ux -> -> # *U &U _coss `ui `ux `ui -> 1 `i * >> -> _steep `ui -> 2 `i -> _degree_minor `ui `s ]
+"121
+[; ;./cos_tab.h: 121:         return (pDegree4 > 360 && pDegree4 < 1080 * 4) ? -val : val;
+[e ) -> ? && > -> _pDegree4 `i -> 360 `i < -> _pDegree4 `i * -> 1080 `i -> 4 `i : -U -> _val `i -> _val `i `s ]
+[e $UE 354  ]
+"122
+[; ;./cos_tab.h: 122: }
 [e :UE 354 ]
 }
-"123
-[; ;./cos_tab.h: 123:  uint16_t sins[91] =
+"125
+[; ;./cos_tab.h: 125:  uint16_t sins[91] =
 [v _sins `us ~T0 @X0 -> 91 `i e ]
 [i _sins
 :U ..
@@ -741,153 +740,147 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 65535 `l `us
 ..
 ]
-"216
-[; ;./cos_tab.h: 216:  uint16_t sin(int16_t pDegree4, _Bool* pRevers)
-[v _sin `(us ~T0 @X0 1 ef2`s`*a ]
-"227
-[; ;./cos_tab.h: 227: {
+"218
+[; ;./cos_tab.h: 218:  int16_t sin15(int16_t pDegree4)
+[v _sin15 `(s ~T0 @X0 1 ef1`s ]
+"229
+[; ;./cos_tab.h: 229: {
 {
-[e :U _sin ]
-"216
-[; ;./cos_tab.h: 216:  uint16_t sin(int16_t pDegree4, _Bool* pRevers)
+[e :U _sin15 ]
+"218
+[; ;./cos_tab.h: 218:  int16_t sin15(int16_t pDegree4)
 [v _pDegree4 `s ~T0 @X0 1 r1 ]
-[v _pRevers `*a ~T0 @X0 1 r2 ]
-"227
-[; ;./cos_tab.h: 227: {
+"229
+[; ;./cos_tab.h: 229: {
 [f ]
-"228
-[; ;./cos_tab.h: 228:     uint8_t degree_minor = pDegree4 & 3;
+"230
+[; ;./cos_tab.h: 230:     uint8_t degree_minor = pDegree4 & 3;
 [v _degree_minor `uc ~T0 @X0 1 a ]
 [e = _degree_minor -> & -> _pDegree4 `i -> 3 `i `uc ]
-"229
-[; ;./cos_tab.h: 229:     uint16_t dg = pDegree4 >> 2;
+"231
+[; ;./cos_tab.h: 231:     uint16_t dg = pDegree4 >> 2;
 [v _dg `us ~T0 @X0 1 a ]
 [e = _dg -> >> -> _pDegree4 `i -> 2 `i `us ]
-"230
-[; ;./cos_tab.h: 230:     *pRevers = dg > 180 ? 1 : 0;
-[e = *U _pRevers -> ? > -> _dg `ui -> -> 180 `i `ui : -> 1 `i -> 0 `i `a ]
-"231
-[; ;./cos_tab.h: 231:     if (dg > 180) dg -= 180;
+"233
+[; ;./cos_tab.h: 233:     if (dg > 180) dg -= 180;
 [e $ ! > -> _dg `ui -> -> 180 `i `ui 358  ]
 [e =- _dg -> -> 180 `i `us ]
 [e :U 358 ]
-"232
-[; ;./cos_tab.h: 232:     if (dg > 90) dg = 180 - dg;
+"234
+[; ;./cos_tab.h: 234:     if (dg > 90) dg = 180 - dg;
 [e $ ! > -> _dg `ui -> -> 90 `i `ui 359  ]
 [e = _dg -> - -> -> 180 `i `ui -> _dg `ui `us ]
 [e :U 359 ]
-"233
-[; ;./cos_tab.h: 233:     uint16_t steep = sins[dg+1] - sins[dg];
-[v _steep `us ~T0 @X0 1 a ]
-[e = _steep -> - -> *U + &U _sins * -> + -> _dg `ui -> -> 1 `i `ui `ux -> -> # *U &U _sins `ui `ux `ui -> *U + &U _sins * -> _dg `ux -> -> # *U &U _sins `ui `ux `ui `us ]
-"234
-[; ;./cos_tab.h: 234:     return sins[dg] + (steep >> 2)* degree_minor;
-[e ) -> + -> *U + &U _sins * -> _dg `ux -> -> # *U &U _sins `ui `ux `ui * >> -> _steep `ui -> 2 `i -> _degree_minor `ui `us ]
-[e $UE 357  ]
 "235
-[; ;./cos_tab.h: 235: }
+[; ;./cos_tab.h: 235:     uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0;
+[v _steep `us ~T0 @X0 1 a ]
+[e = _steep -> ? > -> _degree_minor `i -> 0 `i : - -> *U + &U _sins * -> _dg `ux -> -> # *U &U _sins `ui `ux `ui -> *U + &U _sins * -> - -> _dg `ui -> -> 1 `i `ui `ux -> -> # *U &U _sins `ui `ux `ui -> -> 0 `i `ui `us ]
+"236
+[; ;./cos_tab.h: 236:     int16_t val = (sins[dg] >> 1) - (steep >> 2)* degree_minor;
+[v _val `s ~T0 @X0 1 a ]
+[e = _val -> - >> -> *U + &U _sins * -> _dg `ux -> -> # *U &U _sins `ui `ux `ui -> 1 `i * >> -> _steep `ui -> 2 `i -> _degree_minor `ui `s ]
+"237
+[; ;./cos_tab.h: 237:     return pDegree4 > 720 ? -val : val ;
+[e ) -> ? > -> _pDegree4 `i -> 720 `i : -U -> _val `i -> _val `i `s ]
+[e $UE 357  ]
+"238
+[; ;./cos_tab.h: 238: }
 [e :UE 357 ]
 }
-"237
-[; ;./cos_tab.h: 237:  const int16_t START_ARROW_POSITION = 180 << 2;
+"48 main.c
+[; ;main.c: 48: const int16_t START_ARROW_POSITION = 180 << 2;
 [v _START_ARROW_POSITION `Cs ~T0 @X0 1 e ]
 [i _START_ARROW_POSITION
 -> << -> 180 `i -> 2 `i `s
 ]
-"238
-[; ;./cos_tab.h: 238:  const uint8_t DegreePerKm7 = 120;
+"49
+[; ;main.c: 49: const uint8_t DegreePerKm7 = 120;
 [v _DegreePerKm7 `Cuc ~T0 @X0 1 e ]
 [i _DegreePerKm7
 -> -> 120 `i `uc
 ]
-"240
-[; ;./cos_tab.h: 240:  int getArrowDegree4(uint32_t p_speed4)
+"52
+[; ;main.c: 52: int getArrowDegree4(uint32_t p_speed4)
 [v _getArrowDegree4 `(i ~T0 @X0 1 ef1`ul ]
-"242
-[; ;./cos_tab.h: 242:     {
+"54
+[; ;main.c: 54:     {
 {
 [e :U _getArrowDegree4 ]
-"240
-[; ;./cos_tab.h: 240:  int getArrowDegree4(uint32_t p_speed4)
+"52
+[; ;main.c: 52: int getArrowDegree4(uint32_t p_speed4)
 [v _p_speed4 `ul ~T0 @X0 1 r1 ]
-"242
-[; ;./cos_tab.h: 242:     {
+"54
+[; ;main.c: 54:     {
 [f ]
-"243
-[; ;./cos_tab.h: 243:      uint32_t r1 = p_speed4 * DegreePerKm7;
+"55
+[; ;main.c: 55:      uint32_t r1 = p_speed4 * DegreePerKm7;
 [v _r1 `ul ~T0 @X0 1 a ]
 [e = _r1 * _p_speed4 -> _DegreePerKm7 `ul ]
-"244
-[; ;./cos_tab.h: 244:      uint16_t r2 = r1 >> 7;
+"56
+[; ;main.c: 56:      uint16_t r2 = r1 >> 7;
 [v _r2 `us ~T0 @X0 1 a ]
 [e = _r2 -> >> _r1 -> 7 `i `us ]
-"245
-[; ;./cos_tab.h: 245:      return (r2 > START_ARROW_POSITION) ? (360 << 2) + START_ARROW_POSITION - r2 : START_ARROW_POSITION - r2;
+"57
+[; ;main.c: 57:      return (r2 > START_ARROW_POSITION) ? (360 << 2) + START_ARROW_POSITION - r2 : START_ARROW_POSITION - r2;
 [e ) -> ? > -> _r2 `ui -> _START_ARROW_POSITION `ui : - -> + << -> 360 `i -> 2 `i -> _START_ARROW_POSITION `i `ui -> _r2 `ui - -> _START_ARROW_POSITION `ui -> _r2 `ui `i ]
 [e $UE 360  ]
-"246
-[; ;./cos_tab.h: 246:     }
+"58
+[; ;main.c: 58:     }
 [e :UE 360 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"50 main.c
-[; ;main.c: 50: void main(void)
+"63
+[; ;main.c: 63: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"51
-[; ;main.c: 51: {
+"64
+[; ;main.c: 64: {
 {
 [e :U _main ]
 [f ]
-"53
-[; ;main.c: 53:     SYSTEM_Initialize();
+"66
+[; ;main.c: 66:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"70
-[; ;main.c: 70:     int16_t arrow_degree = START_ARROW_POSITION;
+"85
+[; ;main.c: 85:     int16_t arrow_degree = START_ARROW_POSITION;
 [v _arrow_degree `s ~T0 @X0 1 a ]
 [e = _arrow_degree _START_ARROW_POSITION ]
-"71
-[; ;main.c: 71:     int16_t speed4 = 0;
+"86
+[; ;main.c: 86:     int16_t speed4 = 0;
 [v _speed4 `s ~T0 @X0 1 a ]
 [e = _speed4 -> -> 0 `i `s ]
-"72
-[; ;main.c: 72:     _Bool rewersHor;
-[v _rewersHor `a ~T0 @X0 1 a ]
-"73
-[; ;main.c: 73:     _Bool rewersVert;
-[v _rewersVert `a ~T0 @X0 1 a ]
-"74
-[; ;main.c: 74:     uint16_t hor_pwm_duty;
-[v _hor_pwm_duty `us ~T0 @X0 1 a ]
-"75
-[; ;main.c: 75:     uint16_t vert_pwm_duty;
-[v _vert_pwm_duty `us ~T0 @X0 1 a ]
-"76
-[; ;main.c: 76:     _Bool speed_up = 1;
+"87
+[; ;main.c: 87:     int16_t hor_pwm_duty;
+[v _hor_pwm_duty `s ~T0 @X0 1 a ]
+"88
+[; ;main.c: 88:     int16_t vert_pwm_duty;
+[v _vert_pwm_duty `s ~T0 @X0 1 a ]
+"89
+[; ;main.c: 89:     _Bool speed_up = 1;
 [v _speed_up `a ~T0 @X0 1 a ]
 [e = _speed_up -> -> 1 `i `a ]
-"80
-[; ;main.c: 80:     while (1)
+"93
+[; ;main.c: 93:     while (1)
 [e :U 363 ]
-"81
-[; ;main.c: 81:     {
+"94
+[; ;main.c: 94:     {
 {
-"82
-[; ;main.c: 82:       arrow_degree = getArrowDegree4(speed4);
+"95
+[; ;main.c: 95:       arrow_degree = getArrowDegree4(speed4);
 [e = _arrow_degree -> ( _getArrowDegree4 (1 -> -> _speed4 `l `ul `s ]
-"83
-[; ;main.c: 83:       hor_pwm_duty = cos(arrow_degree, &rewersHor);
-[e = _hor_pwm_duty -> ( _cos (2 , _arrow_degree &U _rewersHor `us ]
-"84
-[; ;main.c: 84:       if (rewersHor) do { LATAbits.LATA1 = 1; } while(0);
-[e $ ! != -> _rewersHor `i -> 0 `i 365  ]
+"96
+[; ;main.c: 96:       hor_pwm_duty = cos15(arrow_degree);
+[e = _hor_pwm_duty ( _cos15 (1 _arrow_degree ]
+"97
+[; ;main.c: 97:       if (hor_pwm_duty < 0) do { LATAbits.LATA1 = 1; } while(0);
+[e $ ! < -> _hor_pwm_duty `i -> 0 `i 365  ]
 [e :U 368 ]
 {
 [e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 }
 [e :U 367 ]
 [e $U 369  ]
-"85
-[; ;main.c: 85:       else do { LATAbits.LATA1 = 0; } while(0);
+"98
+[; ;main.c: 98:       else do { LATAbits.LATA1 = 0; } while(0);
 [e :U 365 ]
 [e :U 372 ]
 {
@@ -895,23 +888,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 371 ]
 [e :U 369 ]
-"86
-[; ;main.c: 86:       PWM3_LoadDutyValue(hor_pwm_duty>>6);
-[e ( _PWM3_LoadDutyValue (1 -> >> -> _hor_pwm_duty `ui -> 6 `i `us ]
-"89
-[; ;main.c: 89:       vert_pwm_duty = sin(arrow_degree, &rewersVert);
-[e = _vert_pwm_duty ( _sin (2 , _arrow_degree &U _rewersVert ]
-"90
-[; ;main.c: 90:       if (rewersVert) do { LATAbits.LATA2 = 1; } while(0);
-[e $ ! != -> _rewersVert `i -> 0 `i 373  ]
+"99
+[; ;main.c: 99:       PWM3_LoadDutyValue(abs(hor_pwm_duty)>>7);
+[e ( _PWM3_LoadDutyValue (1 -> >> ( _abs (1 -> _hor_pwm_duty `i -> 7 `i `us ]
+"102
+[; ;main.c: 102:       vert_pwm_duty = sin15(arrow_degree);
+[e = _vert_pwm_duty ( _sin15 (1 _arrow_degree ]
+"103
+[; ;main.c: 103:       if (vert_pwm_duty < 0) do { LATAbits.LATA2 = 1; } while(0);
+[e $ ! < -> _vert_pwm_duty `i -> 0 `i 373  ]
 [e :U 376 ]
 {
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 }
 [e :U 375 ]
 [e $U 377  ]
-"91
-[; ;main.c: 91:       else do { LATAbits.LATA2 = 0; } while(0);
+"104
+[; ;main.c: 104:       else do { LATAbits.LATA2 = 0; } while(0);
 [e :U 373 ]
 [e :U 380 ]
 {
@@ -919,34 +912,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 379 ]
 [e :U 377 ]
-"92
-[; ;main.c: 92:       PWM4_LoadDutyValue(vert_pwm_duty >> 6);
-[e ( _PWM4_LoadDutyValue (1 -> >> -> _vert_pwm_duty `ui -> 6 `i `us ]
-"93
-[; ;main.c: 93:       speed4 += (speed_up?1:-1) << 0;
+"105
+[; ;main.c: 105:       PWM4_LoadDutyValue(abs(vert_pwm_duty) >> 7);
+[e ( _PWM4_LoadDutyValue (1 -> >> ( _abs (1 -> _vert_pwm_duty `i -> 7 `i `us ]
+"106
+[; ;main.c: 106:       speed4 += (speed_up?1:-1) << 0;
 [e =+ _speed4 -> << ? != -> _speed_up `i -> 0 `i : -> 1 `i -U -> 1 `i -> 0 `i `s ]
-"94
-[; ;main.c: 94:       if (speed4 > 220 * 4) speed_up = 0;
+"107
+[; ;main.c: 107:       if (speed4 > 220 * 4) speed_up = 0;
 [e $ ! > -> _speed4 `i * -> 220 `i -> 4 `i 381  ]
 [e = _speed_up -> -> 0 `i `a ]
 [e $U 382  ]
-"95
-[; ;main.c: 95:       else if (speed4 <=0 ) speed_up = 1;
+"108
+[; ;main.c: 108:       else if (speed4 <=0 ) speed_up = 1;
 [e :U 381 ]
 [e $ ! <= -> _speed4 `i -> 0 `i 383  ]
 [e = _speed_up -> -> 1 `i `a ]
 [e :U 383 ]
 [e :U 382 ]
-"96
-[; ;main.c: 96:       _delay((unsigned long)((100)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"98
-[; ;main.c: 98:     }
+"111
+[; ;main.c: 111:     }
 }
 [e :U 362 ]
 [e $U 363  ]
 [e :U 364 ]
-"99
-[; ;main.c: 99: }
+"112
+[; ;main.c: 112: }
 [e :UE 361 ]
 }

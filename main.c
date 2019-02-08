@@ -43,6 +43,19 @@
 
 #include "mcc_generated_files/mcc.h"
 #include "cos_tab.h"
+#include <stdlib.h>
+
+const int16_t START_ARROW_POSITION = 180 << 2; // degree * 4
+const uint8_t DegreePerKm7 = 120; // degree per km * 128
+    
+    
+int getArrowDegree4(uint32_t p_speed4) 
+ 
+    { 
+     uint32_t r1 = p_speed4 * DegreePerKm7;
+     uint16_t r2 = r1 >> 7;
+     return (r2 > START_ARROW_POSITION) ? (360 << 2) + START_ARROW_POSITION - r2 : START_ARROW_POSITION - r2;
+    }
 
 /*
                          Main application
@@ -66,13 +79,13 @@ void main(void)
 
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
+    
+    
 
     int16_t arrow_degree = START_ARROW_POSITION; // degree  * 4
     int16_t speed4 = 0;
-    bool rewersHor;
-    bool rewersVert;
-    uint16_t hor_pwm_duty;
-    uint16_t vert_pwm_duty;
+    int16_t hor_pwm_duty;
+    int16_t vert_pwm_duty;
     bool speed_up = true;
     
    
@@ -80,20 +93,20 @@ void main(void)
     while (1)
     {
       arrow_degree = getArrowDegree4(speed4);
-      hor_pwm_duty = cos(arrow_degree, &rewersHor);
-      if (rewersHor)  Invert_hor_SetHigh();
+      hor_pwm_duty = cos15(arrow_degree);
+      if (hor_pwm_duty < 0)  Invert_hor_SetHigh();
       else Invert_hor_SetLow();
-      PWM3_LoadDutyValue(hor_pwm_duty>>6);
+      PWM3_LoadDutyValue(abs(hor_pwm_duty)>>7);
 
       
-      vert_pwm_duty = sin(arrow_degree, &rewersVert);
-      if (rewersVert)  Invert_vert_SetHigh();
+      vert_pwm_duty = sin15(arrow_degree);
+      if (vert_pwm_duty < 0)  Invert_vert_SetHigh();
       else Invert_vert_SetLow();
-      PWM4_LoadDutyValue(vert_pwm_duty >> 6);
+      PWM4_LoadDutyValue(abs(vert_pwm_duty) >> 7);
       speed4 += (speed_up?1:-1) << 0;
       if (speed4 > 220 * 4) speed_up = false;
       else if (speed4 <=0 ) speed_up = true;
-     // __delay_ms(100);
+//      __delay_ms(100);
       
     }
 }

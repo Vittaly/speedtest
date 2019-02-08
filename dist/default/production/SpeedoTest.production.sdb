@@ -4,11 +4,11 @@
 [d chip 16F1827 ]
 [d frameptr 6 ]
 "101 C:\temp\pic\SpeedoTest/cos_tab.h
-[v _cos cos `(s  1 e 2 0 ]
-"216
-[v _sin sin `(us  1 e 2 0 ]
-"240
-[v _getArrowDegree4 getArrowDegree4 `(i  1 e 2 0 ]
+[v _cos15 cos15 `(s  1 e 2 0 ]
+"218
+[v _sin15 sin15 `(s  1 e 2 0 ]
+"1 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
@@ -21,7 +21,9 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"50 C:\temp\pic\SpeedoTest\main.c
+"52 C:\temp\pic\SpeedoTest\main.c
+[v _getArrowDegree4 getArrowDegree4 `(i  1 e 2 0 ]
+"63
 [v _main main `(v  1 e 1 0 ]
 "50 C:\temp\pic\SpeedoTest\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -45,12 +47,8 @@
 [v _TMR6_Initialize TMR6_Initialize `(v  1 e 1 0 ]
 "3 C:\temp\pic\SpeedoTest/cos_tab.h
 [v _coss coss `DC[91]us  1 e 182 0 ]
-"123
+"125
 [v _sins sins `[91]us  1 e 182 @8378 ]
-"237
-[v _START_ARROW_POSITION START_ARROW_POSITION `DCs  1 e 2 0 ]
-"238
-[v _DegreePerKm7 DegreePerKm7 `DCuc  1 e 1 0 ]
 [s S90 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 TMR4IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
@@ -189,49 +187,50 @@
 ]
 [u S120 . 1 `S108 1 . 1 0 `S116 1 . 1 0 ]
 [v _T6CONbits T6CONbits `VES120  1 e 1 @1054 ]
-"50 C:\temp\pic\SpeedoTest\main.c
+"48 C:\temp\pic\SpeedoTest\main.c
+[v _START_ARROW_POSITION START_ARROW_POSITION `DCs  1 e 2 0 ]
+"49
+[v _DegreePerKm7 DegreePerKm7 `DCuc  1 e 1 0 ]
+"63
 [v _main main `(v  1 e 1 0 ]
 {
-"71
-[v main@speed4 speed4 `s  1 a 2 29 ]
-"70
-[v main@arrow_degree arrow_degree `s  1 a 2 25 ]
-"75
-[v main@vert_pwm_duty vert_pwm_duty `us  1 a 2 20 ]
-"74
-[v main@hor_pwm_duty hor_pwm_duty `us  1 a 2 18 ]
-"73
-[v main@rewersVert rewersVert `a  1 a 1 28 ]
-"72
-[v main@rewersHor rewersHor `a  1 a 1 27 ]
-"76
+"86
+[v main@speed4 speed4 `s  1 a 2 31 ]
+"85
+[v main@arrow_degree arrow_degree `s  1 a 2 29 ]
+"88
+[v main@vert_pwm_duty vert_pwm_duty `s  1 a 2 27 ]
+"87
+[v main@hor_pwm_duty hor_pwm_duty `s  1 a 2 25 ]
+"89
 [v main@speed_up speed_up `a  1 a 1 24 ]
-"99
+"112
 } 0
-"216 C:\temp\pic\SpeedoTest/cos_tab.h
-[v _sin sin `(us  1 e 2 0 ]
+"218 C:\temp\pic\SpeedoTest/cos_tab.h
+[v _sin15 sin15 `(s  1 e 2 0 ]
 {
-"229
-[v sin@dg dg `us  1 a 2 12 ]
-"233
-[v sin@steep steep `us  1 a 2 9 ]
-"228
-[v sin@degree_minor degree_minor `uc  1 a 1 11 ]
-"216
-[v sin@pDegree4 pDegree4 `s  1 p 2 6 ]
-[v sin@pRevers pRevers `*.4a  1 p 1 8 ]
+"231
+[v sin15@dg dg `us  1 a 2 17 ]
+"236
+[v sin15@val val `s  1 a 2 14 ]
 "235
+[v sin15@steep steep `us  1 a 2 12 ]
+"230
+[v sin15@degree_minor degree_minor `uc  1 a 1 16 ]
+"218
+[v sin15@pDegree4 pDegree4 `s  1 p 2 6 ]
+"238
 } 0
-"240
+"52 C:\temp\pic\SpeedoTest\main.c
 [v _getArrowDegree4 getArrowDegree4 `(i  1 e 2 0 ]
 {
-"243
+"55
 [v getArrowDegree4@r1 r1 `ul  1 a 4 10 ]
-"244
+"56
 [v getArrowDegree4@r2 r2 `us  1 a 2 14 ]
-"240
+"52
 [v getArrowDegree4@p_speed4 p_speed4 `ul  1 p 4 0 ]
-"246
+"58
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
@@ -244,18 +243,19 @@
 "129
 } 0
 "101 C:\temp\pic\SpeedoTest/cos_tab.h
-[v _cos cos `(s  1 e 2 0 ]
+[v _cos15 cos15 `(s  1 e 2 0 ]
 {
 "114
-[v cos@dg dg `us  1 a 2 12 ]
-"118
-[v cos@steep steep `us  1 a 2 8 ]
-"113
-[v cos@degree_minor degree_minor `uc  1 a 1 10 ]
-"101
-[v cos@pDegree4 pDegree4 `s  1 p 2 6 ]
-[v cos@pRevers pRevers `*.4a  1 p 1 8 ]
+[v cos15@dg dg `us  1 a 2 13 ]
 "120
+[v cos15@val val `s  1 a 2 10 ]
+"119
+[v cos15@steep steep `us  1 a 2 8 ]
+"113
+[v cos15@degree_minor degree_minor `uc  1 a 1 12 ]
+"101
+[v cos15@pDegree4 pDegree4 `s  1 p 2 6 ]
+"122
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -266,6 +266,12 @@
 [v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
+} 0
+"1 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+{
+[v abs@a a `i  1 p 2 0 ]
+"4
 } 0
 "50 C:\temp\pic\SpeedoTest\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -310,12 +316,12 @@
 "82 C:\temp\pic\SpeedoTest\mcc_generated_files/pwm4.c
 [v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
 {
-[v PWM4_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
+[v PWM4_LoadDutyValue@dutyValue dutyValue `us  1 p 2 4 ]
 "89
 } 0
 "82 C:\temp\pic\SpeedoTest\mcc_generated_files/pwm3.c
 [v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
 {
-[v PWM3_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
+[v PWM3_LoadDutyValue@dutyValue dutyValue `us  1 p 2 4 ]
 "89
 } 0

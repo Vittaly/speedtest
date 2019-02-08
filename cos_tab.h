@@ -98,10 +98,10 @@ uint16_t const coss[91] = { // cos val by degree * hff
 1144,
 0};
 
-int16_t cos(int16_t pDegree4, bool* pRevers) //
+int16_t cos15(int16_t pDegree4) //
 /**
   @Summary
- return cos value * 65536 by degree * 4
+ return cos value * 32768 by degree * 4
 
   @Description
 
@@ -112,14 +112,13 @@ int16_t cos(int16_t pDegree4, bool* pRevers) //
 {
     uint8_t degree_minor = pDegree4 & 3;
     uint16_t dg = pDegree4 >> 2;
-    *pRevers = (pDegree4 > 360 && pDegree4 < 1080 * 4) ? true : false; // if 270 < degree > 90
+  //  *pRevers = (pDegree4 > 360 && pDegree4 < 1080 * 4) ? true : false; // if 270 < degree > 90
     if (dg > 180) dg -= 180;  // move from third or fourth sector to first or second
     if (dg > 90) dg = 180 - dg; // move from second to first sectorgd
     
         uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
-        uint16_t val1 = coss[dg];
-        uint8_t  val2 = (steep >> 2)* degree_minor;
-        return val1 + val2;
+        int16_t val = (coss[dg] >> 1) + (steep >> 2)* degree_minor;
+        return (pDegree4 > 360 && pDegree4 < 1080 * 4) ? -val : val; // if 270 < degree > 90 then invert value
 }
 
 
@@ -216,7 +215,7 @@ int16_t cos(int16_t pDegree4, bool* pRevers) //
 65526, 
 65535};
  
- uint16_t sin(int16_t pDegree4, bool* pRevers) //
+ int16_t sin15(int16_t pDegree4) //
 /**
   @Summary
  return sin value * 65536 by degree * 4
@@ -230,22 +229,20 @@ int16_t cos(int16_t pDegree4, bool* pRevers) //
 {
     uint8_t degree_minor = pDegree4 & 3;
     uint16_t dg = pDegree4 >> 2;
-    *pRevers = dg > 180 ? true : false; 
+    //*pRevers = dg > 180 ? true : false; 
     if (dg > 180) dg -= 180;  // move from third or fourth sector to first or second
     if (dg > 90) dg = 180 - dg; // move from second to first sector
     uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0; // get delta to next value in stream
-    uint16_t val1  = sins[dg];
-    uint8_t  val2 = (steep >> 2)* degree_minor;
-    return val1 - val2; // correcting value to steep devided on minor part
+    int16_t val  = (sins[dg] >> 1) - (steep >> 2)* degree_minor; // correcting value to steep devided on minor part
+    return pDegree4 > 720 ? -val : val ;// reverse if degree > 180 (*4))
 }
  
- const int16_t START_ARROW_POSITION = 180 << 2; // degree * 4
- const uint8_t DegreePerKm7 = 120; // degree per km * 128
  
- int getArrowDegree4(uint32_t p_speed4) 
+ 
+ /*int getArrowDegree4(uint32_t p_speed4) 
  
     { 
      uint32_t r1 = p_speed4 * DegreePerKm7;
      uint16_t r2 = r1 >> 7;
      return (r2 > START_ARROW_POSITION) ? (360 << 2) + START_ARROW_POSITION - r2 : START_ARROW_POSITION - r2;
-    }
+    }*/

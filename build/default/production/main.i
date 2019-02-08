@@ -4484,16 +4484,18 @@ uint16_t const coss[91] = {
 1144,
 0};
 
-int16_t cos(int16_t pDegree4, _Bool* pRevers)
+int16_t cos15(int16_t pDegree4)
 # 112 "./cos_tab.h"
 {
     uint8_t degree_minor = pDegree4 & 3;
     uint16_t dg = pDegree4 >> 2;
-    *pRevers = (pDegree4 > 360 && pDegree4 < 1080 * 4) ? 1 : 0;
+
     if (dg > 180) dg -= 180;
     if (dg > 90) dg = 180 - dg;
-    uint16_t steep = coss[dg] - coss[dg+1];
-    return coss[dg] - (steep >> 2)* degree_minor;
+
+        uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
+        int16_t val = (coss[dg] >> 1) + (steep >> 2)* degree_minor;
+        return (pDegree4 > 360 && pDegree4 < 1080 * 4) ? -val : val;
 }
 
 
@@ -4590,30 +4592,33 @@ int16_t cos(int16_t pDegree4, _Bool* pRevers)
 65526,
 65535};
 
- uint16_t sin(int16_t pDegree4, _Bool* pRevers)
-# 227 "./cos_tab.h"
+ int16_t sin15(int16_t pDegree4)
+# 229 "./cos_tab.h"
 {
     uint8_t degree_minor = pDegree4 & 3;
     uint16_t dg = pDegree4 >> 2;
-    *pRevers = dg > 180 ? 1 : 0;
+
     if (dg > 180) dg -= 180;
     if (dg > 90) dg = 180 - dg;
-    uint16_t steep = sins[dg+1] - sins[dg];
-    return sins[dg] + (steep >> 2)* degree_minor;
+    uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0;
+    int16_t val = (sins[dg] >> 1) - (steep >> 2)* degree_minor;
+    return pDegree4 > 720 ? -val : val ;
 }
+# 45 "main.c" 2
 
- const int16_t START_ARROW_POSITION = 180 << 2;
- const uint8_t DegreePerKm7 = 120;
 
- int getArrowDegree4(uint32_t p_speed4)
+
+const int16_t START_ARROW_POSITION = 180 << 2;
+const uint8_t DegreePerKm7 = 120;
+
+
+int getArrowDegree4(uint32_t p_speed4)
 
     {
      uint32_t r1 = p_speed4 * DegreePerKm7;
      uint16_t r2 = r1 >> 7;
      return (r2 > START_ARROW_POSITION) ? (360 << 2) + START_ARROW_POSITION - r2 : START_ARROW_POSITION - r2;
     }
-# 45 "main.c" 2
-
 
 
 
@@ -4622,13 +4627,11 @@ void main(void)
 {
 
     SYSTEM_Initialize();
-# 70 "main.c"
+# 85 "main.c"
     int16_t arrow_degree = START_ARROW_POSITION;
     int16_t speed4 = 0;
-    _Bool rewersHor;
-    _Bool rewersVert;
-    uint16_t hor_pwm_duty;
-    uint16_t vert_pwm_duty;
+    int16_t hor_pwm_duty;
+    int16_t vert_pwm_duty;
     _Bool speed_up = 1;
 
 
@@ -4636,20 +4639,20 @@ void main(void)
     while (1)
     {
       arrow_degree = getArrowDegree4(speed4);
-      hor_pwm_duty = cos(arrow_degree, &rewersHor);
-      if (rewersHor) do { LATAbits.LATA1 = 1; } while(0);
+      hor_pwm_duty = cos15(arrow_degree);
+      if (hor_pwm_duty < 0) do { LATAbits.LATA1 = 1; } while(0);
       else do { LATAbits.LATA1 = 0; } while(0);
-      PWM3_LoadDutyValue(hor_pwm_duty>>6);
+      PWM3_LoadDutyValue(abs(hor_pwm_duty)>>7);
 
 
-      vert_pwm_duty = sin(arrow_degree, &rewersVert);
-      if (rewersVert) do { LATAbits.LATA2 = 1; } while(0);
+      vert_pwm_duty = sin15(arrow_degree);
+      if (vert_pwm_duty < 0) do { LATAbits.LATA2 = 1; } while(0);
       else do { LATAbits.LATA2 = 0; } while(0);
-      PWM4_LoadDutyValue(vert_pwm_duty >> 6);
+      PWM4_LoadDutyValue(abs(vert_pwm_duty) >> 7);
       speed4 += (speed_up?1:-1) << 0;
       if (speed4 > 220 * 4) speed_up = 0;
       else if (speed4 <=0 ) speed_up = 1;
-      _delay((unsigned long)((100)*(8000000/4000.0)));
+
 
     }
 }
