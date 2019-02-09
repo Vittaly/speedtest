@@ -116,9 +116,11 @@ int16_t cos15(int16_t pDegree4) //
     if (dg > 180) dg -= 180;  // move from third or fourth sector to first or second
     if (dg > 90) dg = 180 - dg; // move from second to first sectorgd
     
-        uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
-        int16_t val = (coss[dg] >> 1) + (steep >> 2)* degree_minor;
-        return (pDegree4 > 360 && pDegree4 < 1080 * 4) ? -val : val; // if 270 < degree > 90 then invert value
+        uint16_t steep = 0;
+        if (degree_minor > 0)
+        steep  = dg > 0 ? coss[dg - 1] - coss[dg] : coss[0] - coss[1];
+        int16_t val = ((coss[dg] & 0xFFFC) >> 2) - ((steep & 0xFFF8) >> 4)* degree_minor;
+        return (pDegree4 > 360 && pDegree4 < 1080) ? -val : val; // if 270 < degree > 90 then invert value
 }
 
 
@@ -232,8 +234,10 @@ int16_t cos15(int16_t pDegree4) //
     //*pRevers = dg > 180 ? true : false; 
     if (dg > 180) dg -= 180;  // move from third or fourth sector to first or second
     if (dg > 90) dg = 180 - dg; // move from second to first sector
-    uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0; // get delta to next value in stream
-    int16_t val  = (sins[dg] >> 1) - (steep >> 2)* degree_minor; // correcting value to steep devided on minor part
+    uint16_t steep = 0;
+    if (degree_minor > 0)
+        steep  = dg > 0 ? sins[dg] - sins[dg - 1] : sins[1] - sins[0]; // get delta to next value in stream
+    int16_t val  = ((sins[dg]& 0xFFFC) >> 2) + ((steep & 0xFFF8) >> 4)* degree_minor; // correcting value to steep devided on minor part
     return pDegree4 > 720 ? -val : val ;// reverse if degree > 180 (*4))
 }
  

@@ -93,20 +93,28 @@ void main(void)
     while (1)
     {
       arrow_degree = getArrowDegree4(speed4);
+     // hor_pwm_duty = cos15(360);
       hor_pwm_duty = cos15(arrow_degree);
-      if (hor_pwm_duty < 0)  Invert_hor_SetHigh();
-      else Invert_hor_SetLow();
+      
+      if (hor_pwm_duty < 0)  
+          //Invert_hor_SetHigh();
+          LATAbits.LATA1 = 1;
+      else 
+         // Invert_hor_SetLow();
+          LATAbits.LATA1 = 0;
       PWM3_LoadDutyValue(abs(hor_pwm_duty)>>7);
 
       
       vert_pwm_duty = sin15(arrow_degree);
-      if (vert_pwm_duty < 0)  Invert_vert_SetHigh();
-      else Invert_vert_SetLow();
+      if (vert_pwm_duty < 0)  
+          Invert_vert_SetHigh();
+      else 
+          Invert_vert_SetLow();
       PWM4_LoadDutyValue(abs(vert_pwm_duty) >> 7);
-      speed4 += (speed_up?1:-1) << 0;
+      speed4 += (speed_up?1:-1);
       if (speed4 > 220 * 4) speed_up = false;
       else if (speed4 <=0 ) speed_up = true;
-//      __delay_ms(100);
+      __delay_ms(5);
       
     }
 }

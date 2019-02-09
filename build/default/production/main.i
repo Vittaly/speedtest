@@ -4328,13 +4328,6 @@ typedef uint32_t uint_fast32_t;
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
 # 53 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/pwm3.h" 1
-# 97 "./mcc_generated_files/pwm3.h"
-void PWM3_Initialize(void);
-# 124 "./mcc_generated_files/pwm3.h"
-void PWM3_LoadDutyValue(uint16_t dutyValue);
-# 54 "./mcc_generated_files/mcc.h" 2
-
 # 1 "./mcc_generated_files/tmr6.h" 1
 # 103 "./mcc_generated_files/tmr6.h"
 void TMR6_Initialize(void);
@@ -4350,6 +4343,13 @@ void TMR6_WriteTimer(uint8_t timerVal);
 void TMR6_LoadPeriodRegister(uint8_t periodVal);
 # 325 "./mcc_generated_files/tmr6.h"
 _Bool TMR6_HasOverflowOccured(void);
+# 54 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/pwm3.h" 1
+# 97 "./mcc_generated_files/pwm3.h"
+void PWM3_Initialize(void);
+# 124 "./mcc_generated_files/pwm3.h"
+void PWM3_LoadDutyValue(uint16_t dutyValue);
 # 55 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr4.h" 1
@@ -4493,9 +4493,11 @@ int16_t cos15(int16_t pDegree4)
     if (dg > 180) dg -= 180;
     if (dg > 90) dg = 180 - dg;
 
-        uint16_t steep = degree_minor > 0 ? coss[dg - 1] - coss[dg] : 0;
-        int16_t val = (coss[dg] >> 1) + (steep >> 2)* degree_minor;
-        return (pDegree4 > 360 && pDegree4 < 1080 * 4) ? -val : val;
+        uint16_t steep = 0;
+        if (degree_minor > 0)
+        steep = dg > 0 ? coss[dg - 1] - coss[dg] : coss[0] - coss[1];
+        int16_t val = ((coss[dg] & 0xFFFC) >> 2) - ((steep & 0xFFF8) >> 4)* degree_minor;
+        return (pDegree4 > 360 && pDegree4 < 1080) ? -val : val;
 }
 
 
@@ -4593,15 +4595,17 @@ int16_t cos15(int16_t pDegree4)
 65535};
 
  int16_t sin15(int16_t pDegree4)
-# 229 "./cos_tab.h"
+# 231 "./cos_tab.h"
 {
     uint8_t degree_minor = pDegree4 & 3;
     uint16_t dg = pDegree4 >> 2;
 
     if (dg > 180) dg -= 180;
     if (dg > 90) dg = 180 - dg;
-    uint16_t steep = degree_minor > 0 ? sins[dg] - sins[dg -1] : 0;
-    int16_t val = (sins[dg] >> 1) - (steep >> 2)* degree_minor;
+    uint16_t steep = 0;
+    if (degree_minor > 0)
+        steep = dg > 0 ? sins[dg] - sins[dg - 1] : sins[1] - sins[0];
+    int16_t val = ((sins[dg]& 0xFFFC) >> 2) + ((steep & 0xFFF8) >> 4)* degree_minor;
     return pDegree4 > 720 ? -val : val ;
 }
 # 45 "main.c" 2
@@ -4639,20 +4643,28 @@ void main(void)
     while (1)
     {
       arrow_degree = getArrowDegree4(speed4);
+
       hor_pwm_duty = cos15(arrow_degree);
-      if (hor_pwm_duty < 0) do { LATAbits.LATA1 = 1; } while(0);
-      else do { LATAbits.LATA1 = 0; } while(0);
+
+      if (hor_pwm_duty < 0)
+
+          LATAbits.LATA1 = 1;
+      else
+
+          LATAbits.LATA1 = 0;
       PWM3_LoadDutyValue(abs(hor_pwm_duty)>>7);
 
 
       vert_pwm_duty = sin15(arrow_degree);
-      if (vert_pwm_duty < 0) do { LATAbits.LATA2 = 1; } while(0);
-      else do { LATAbits.LATA2 = 0; } while(0);
+      if (vert_pwm_duty < 0)
+          do { LATAbits.LATA2 = 1; } while(0);
+      else
+          do { LATAbits.LATA2 = 0; } while(0);
       PWM4_LoadDutyValue(abs(vert_pwm_duty) >> 7);
-      speed4 += (speed_up?1:-1) << 0;
+      speed4 += (speed_up?1:-1);
       if (speed4 > 220 * 4) speed_up = 0;
       else if (speed4 <=0 ) speed_up = 1;
-
+      _delay((unsigned long)((5)*(8000000/4000.0)));
 
     }
 }

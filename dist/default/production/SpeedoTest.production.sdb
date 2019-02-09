@@ -5,7 +5,7 @@
 [d frameptr 6 ]
 "101 C:\temp\pic\SpeedoTest/cos_tab.h
 [v _cos15 cos15 `(s  1 e 2 0 ]
-"218
+"220
 [v _sin15 sin15 `(s  1 e 2 0 ]
 "1 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
@@ -47,7 +47,7 @@
 [v _TMR6_Initialize TMR6_Initialize `(v  1 e 1 0 ]
 "3 C:\temp\pic\SpeedoTest/cos_tab.h
 [v _coss coss `DC[91]us  1 e 182 0 ]
-"125
+"127
 [v _sins sins `[91]us  1 e 182 @8378 ]
 [s S90 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 TMR4IF 1 0 :1:1 
@@ -204,22 +204,22 @@
 [v main@hor_pwm_duty hor_pwm_duty `s  1 a 2 25 ]
 "89
 [v main@speed_up speed_up `a  1 a 1 24 ]
-"112
+"120
 } 0
-"218 C:\temp\pic\SpeedoTest/cos_tab.h
+"220 C:\temp\pic\SpeedoTest/cos_tab.h
 [v _sin15 sin15 `(s  1 e 2 0 ]
 {
-"231
+"233
 [v sin15@dg dg `us  1 a 2 17 ]
-"236
+"240
 [v sin15@val val `s  1 a 2 14 ]
-"235
+"237
 [v sin15@steep steep `us  1 a 2 12 ]
-"230
+"232
 [v sin15@degree_minor degree_minor `uc  1 a 1 16 ]
-"218
+"220
 [v sin15@pDegree4 pDegree4 `s  1 p 2 6 ]
-"238
+"242
 } 0
 "52 C:\temp\pic\SpeedoTest\main.c
 [v _getArrowDegree4 getArrowDegree4 `(i  1 e 2 0 ]
@@ -246,16 +246,16 @@
 [v _cos15 cos15 `(s  1 e 2 0 ]
 {
 "114
-[v cos15@dg dg `us  1 a 2 13 ]
-"120
-[v cos15@val val `s  1 a 2 10 ]
+[v cos15@dg dg `us  1 a 2 15 ]
+"122
+[v cos15@val val `s  1 a 2 12 ]
 "119
-[v cos15@steep steep `us  1 a 2 8 ]
+[v cos15@steep steep `us  1 a 2 10 ]
 "113
-[v cos15@degree_minor degree_minor `uc  1 a 1 12 ]
+[v cos15@degree_minor degree_minor `uc  1 a 1 14 ]
 "101
 [v cos15@pDegree4 pDegree4 `s  1 p 2 6 ]
-"122
+"124
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]

@@ -4328,13 +4328,6 @@ typedef uint32_t uint_fast32_t;
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
 # 53 "mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/pwm3.h" 1
-# 97 "mcc_generated_files/pwm3.h"
-void PWM3_Initialize(void);
-# 124 "mcc_generated_files/pwm3.h"
-void PWM3_LoadDutyValue(uint16_t dutyValue);
-# 54 "mcc_generated_files/mcc.h" 2
-
 # 1 "mcc_generated_files/tmr6.h" 1
 # 103 "mcc_generated_files/tmr6.h"
 void TMR6_Initialize(void);
@@ -4350,6 +4343,13 @@ void TMR6_WriteTimer(uint8_t timerVal);
 void TMR6_LoadPeriodRegister(uint8_t periodVal);
 # 325 "mcc_generated_files/tmr6.h"
 _Bool TMR6_HasOverflowOccured(void);
+# 54 "mcc_generated_files/mcc.h" 2
+
+# 1 "mcc_generated_files/pwm3.h" 1
+# 97 "mcc_generated_files/pwm3.h"
+void PWM3_Initialize(void);
+# 124 "mcc_generated_files/pwm3.h"
+void PWM3_LoadDutyValue(uint16_t dutyValue);
 # 55 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr4.h" 1
